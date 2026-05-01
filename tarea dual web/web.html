@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAS MEJORES PELÍCULAS DE TERROR PARA ESTE 2026</title>
+
+<style>
+body{
+    margin:0;
+    height:200vh;
+    background:url("fondo1.jpeg") center/cover no-repeat;
+    color:white;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+/* Caja del texto */
+.contenido{
+    background:rgba(0,0,0,0.60);
+    padding:25px;
+    border-radius:15px;
+    max-width:900px;
+}
+
+/* Pantalla inicial */
+#inicio{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+}
+
+#inicio button{
+    padding:20px 40px;
+    font-size:25px;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+}
+
+/* Screamer */
+#screamer{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:1000px;
+    height:1100px;
+    background:url("screamer.jpg") center/cover no-repeat;
+    display:none;
+    z-index:9999;
+    border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Pantalla inicial -->
+<div id="inicio">
+    <button onclick="entrar()">ENTRAR AL SITIO</button>
+</div>
+
+<!-- Contenido -->
+<div class="contenido">
+
+<h1>LAS MEJORES PELÍCULAS DE TERROR PARA ESTE 2026</h1>
+
+<h3>
+El cine de terror no solo busca asustar… busca hacerte sentir.<br><br>
+
+Es ese escalofrío que recorre tu cuerpo, esa tensión que te obliga a mirar la pantalla sin poder apartar la vista.<br><br>
+
+A lo largo del tiempo, este género ha explorado nuestros miedos más profundos: la oscuridad, lo desconocido, la muerte e incluso nuestra propia mente.<br><br>
+
+Desde sus inicios, el terror ha evolucionado para adaptarse a cada generación, creando historias cada vez más impactantes y perturbadoras.<br><br>
+
+Ya sea a través de lo psicológico, lo sobrenatural o lo inexplicable, el cine de horror nos invita a enfrentar aquello que normalmente evitaríamos… pero desde la seguridad de una pantalla.<br><br>
+
+Porque, al final, el verdadero terror no siempre está en lo que vemos… sino en lo que imaginamos.
+</h3>
+
+</div>
+
+<!-- Screamer -->
+<div id="screamer"></div>
+
+<!-- Sonido screamer -->
+<audio id="grito">
+    <source src="scream.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let activado = false;
+
+function entrar(){
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("musica").play();
+}
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 300 && !activado){
+
+        activado = true;
+
+        document.getElementById("screamer").style.display = "block";
+
+        let audio = document.getElementById("grito");
+        audio.currentTime = 0;
+        audio.play();
+
+        setTimeout(function(){
+            document.getElementById("screamer").style.display = "none";
+        },1000);
+    }
+
+});
+</script>
+
+</body>
+</html>
